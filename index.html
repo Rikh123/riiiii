@@ -101,6 +101,38 @@
             return false; // Prevent form submission
         }
     </script>
+
+    <script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Disable keyboard shortcuts for developer tools
+    document.onkeydown = function (event) {
+        // F12 key
+        if (event.keyCode === 123) {
+            return false;
+        }
+        // Ctrl+Shift+I
+        else if (event.ctrlKey && event.shiftKey && event.keyCode === 73) {
+            return false;
+        }
+        // Ctrl+Shift+J
+        else if (event.ctrlKey && event.shiftKey && event.keyCode === 74) {
+            return false;
+        }
+        // Ctrl+Shift+C
+        else if (event.ctrlKey && event.shiftKey && event.keyCode === 67) {
+            return false;
+        }
+        // Ctrl+U
+        else if (event.ctrlKey && event.keyCode === 85) {
+            return false;
+        }
+    };
+</script>
+
+
+    
 </body>
 
 </html> /
